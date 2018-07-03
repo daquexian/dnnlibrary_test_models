@@ -1,0 +1,45 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 6
+      dim: 7
+      dim: 7
+    }
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 6
+    kernel_size: 3
+    group: 2
+    dilation: 1
+    pad: 2
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "conv1"
+  top: "conv2"
+  convolution_param {
+    num_output: 6
+    kernel_size: 3
+    group: 3
+    dilation: 2
+    pad: 3
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
