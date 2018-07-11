@@ -4,7 +4,7 @@ layer {
   top: "data"
   input_param {
     shape {
-      dim: 3
+      dim: 1
       dim: 6
       dim: 7
       dim: 7
@@ -20,7 +20,7 @@ layer {
     shape {
       dim: -1   # 7
       dim: 7
-      dim: 6
+      dim: 2
       dim: 3
     }
   }
@@ -32,7 +32,7 @@ layer {
   top: "reshape2"
   reshape_param {
     shape {
-      dim: 6
+      dim: 2
       dim: 0
       dim: 3
       dim: 7
