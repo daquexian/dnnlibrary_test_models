@@ -1,0 +1,83 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 6
+      dim: 8
+      dim: 8
+    }
+  }
+}
+layer {
+  name: "conv0"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv0"
+  convolution_param {
+    num_output: 6
+    kernel_size: 3
+    pad: 1
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
+layer {
+  name: "reshape"
+  type: "Reshape"
+  bottom: "conv0"
+  top: "reshape"
+  reshape_param {
+    shape {
+      dim: 1
+      dim: -1   # 24
+      dim: 4
+      dim: 4
+    }
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "reshape"
+  top: "conv1"
+  convolution_param {
+    num_output: 6
+    kernel_size: 3
+    pad: 1
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
+layer {
+  name: "reshape2"
+  type: "Reshape"
+  bottom: "reshape"
+  top: "reshape2"
+  reshape_param {
+    shape {
+      dim: 1
+      dim: 0
+      dim: 2
+      dim: 8
+    }
+  }
+}
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "reshape2"
+  top: "conv2"
+  convolution_param {
+    num_output: 12
+    kernel_size: 3
+    pad: 1
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
